@@ -1,24 +1,24 @@
-from django.shortcuts import render
+from bookstore import books
+from django.db.models.base import Model
+from books.models import Book
+from django.shortcuts import redirect, render ,get_object_or_404
 from django.http import HttpResponse
-import json
+from django.http import Http404
 
 
-
-# Create your views here.
-bookdata  =  open('books.json').read()
-
-data = json.loads(bookdata)
 
 def index(request):
-    context = {'books':data}
+    dbData = Book.objects.all()
+    context = {'books':dbData}
     return render(request, 'books/index.html', context)
 
 
-def show(request,id):
-    singlebook =list()
-    for book in data:
-        if book['id'] == id:
-            singlebook = book
 
+def show(request,id):
+    singlebook = get_object_or_404(Book,pk=id)
     context = {'book':singlebook}
     return render(request, 'books/show.html', context)
+
+
+def review(request):
+    return redirect('/books')
