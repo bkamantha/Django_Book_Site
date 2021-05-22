@@ -31,14 +31,16 @@ Book Store - {{book.title}}
                 </b>
                 {{book.categories}}
             </p>
-            <p>
+            <div>
                 <b>
                     Book Author :
                 </b>
                 
-                {% for author in authors %}{{author}}, {% endfor %}
+                {% for author in authors %}
+               <a href="{% url 'authors.books' author %}">{{author}}</a>, 
+                {% endfor %}
                 
-            </p>
+            </div>
             <p>
                 <b>
                     Book shortDescription :

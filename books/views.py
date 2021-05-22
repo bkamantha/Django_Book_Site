@@ -1,3 +1,4 @@
+
 from typing import List
 from django.db import models
 from django.db.models.base import Model
@@ -12,13 +13,6 @@ class Booklistview(ListView):
     def get_queryset(self):
         return Book.objects.all()
 
-# This is without using generic view
-
-# def index(request):
-#     dbData = Book.objects.all()
-#     context = {'books': dbData}
-#     return render(request, 'books/index.html', context)
-
 
 class BookDetailView(DetailView):
     model = Book
@@ -29,15 +23,31 @@ class BookDetailView(DetailView):
         context['authors'] = context['book'].author.all()
         return context
 
-# def show(request, id):
-#     singlebook = get_object_or_404(Book, pk=id)
-#     reviews = Review.objects.filter(book_id=id).order_by('-time_stamp')
-#     context = {'book': singlebook, 'reviews': reviews}
-#     return render(request, 'books/show.html', context)
 
+def author(request,author):
+    book = Book.objects.filter( author__name= author)
+    context = {'book_list' : book}
+    return render(request, 'books/book_list.html',context)
 
+    
 def review(request, id):
     review = request.POST['review']
     reviewdb = Review(body=review, book_id=id)
     reviewdb.save()
     return redirect('/books')
+
+
+
+
+# This is without using generic view
+
+# def index(request):
+#     dbData = Book.objects.all()
+#     context = {'books': dbData}
+#     return render(request, 'books/index.html', context)
+
+# def show(request, id):
+#     singlebook = get_object_or_404(Book, pk=id)
+#     reviews = Review.objects.filter(book_id=id).order_by('-time_stamp')
+#     context = {'book': singlebook, 'reviews': reviews}
+#     return render(request, 'books/show.html', context)
