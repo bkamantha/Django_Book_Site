@@ -1,5 +1,4 @@
-{%extends 'books/base.html'%}
-
+{%extends 'base.html'%}
 
 {% block title%}
 Book Store - {{book.title}}
@@ -12,7 +11,7 @@ Book Store - {{book.title}}
     <div class="align-left justify-between">
         <h1 class="text-center text-3xl font-bold">
             <div align='center'>
-                <img class="p-4 " src="{{book.thumbnailUrl}}" width="200">
+                <img class="p-4 " src="{{book.thumbnailUrl}}" width="300">
                 </img>
 
                 {{book.title}}

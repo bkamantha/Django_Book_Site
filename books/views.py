@@ -1,20 +1,18 @@
-
-from typing import List
-from django.db import models
-from django.db.models.base import Model
 from books.models import Book, Review
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # This is using generic view
-class Booklistview(ListView):
+class Booklistview(LoginRequiredMixin,ListView):
+   # login_url = '/login/'
     #context_object_name = "books"
     def get_queryset(self):
         return Book.objects.all()
 
 
-class BookDetailView(DetailView):
+class BookDetailView(LoginRequiredMixin,DetailView):
     model = Book
 
     def get_context_data(self, **kwargs):

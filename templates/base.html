@@ -1,0 +1,46 @@
+<!-- =DOCTYPE html-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE-edge" http-equiv="X-UA-Compatible" />
+    <meta content="width = device-width,initial-scale=1.0" name="viewport" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <title>
+        {% block title %}
+        Django Sample Project
+        {% endblock %}
+    </title>
+    <style>
+        #bodyimg {
+            background-color: rgb(212, 204, 248);
+            background-repeat: no-repeat;
+            background-size: 1220px 1080px ;
+        }
+    </style>
+</head>
+
+<body id =bodyimg >
+    <nav class="p-4 flex justify-between bg-blue-600 text-white w-full">
+        <div class="flex flex-col justify-center">
+            <p>eBook Store</p>
+        </div>
+        <div class="flex justify-end">
+            <div>
+                <button class="p-2 rounded bg-gary-700 text-white">Logout</button>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <div>
+        <section class="py-10 flex justify-center">
+            {% block content%}
+
+            {% endblock %}
+        </section>
+    </div>
+</body>
+
+</html>
