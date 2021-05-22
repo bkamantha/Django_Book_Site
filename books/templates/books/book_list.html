@@ -11,7 +11,7 @@ Book Store
         {%for book in book_list%}
         <a class="justify-self-center text-center my-4" href="{% url 'book.show' book.id%}" target="_blank">
             <div class="flex justify-center">
-                <img src="{{book.thumbnailUrl}}" width="100"/>
+                <img src="{{book.thumbnailUrl}}" width="100" />
             </div>
             <p>
                 {{book.title}}

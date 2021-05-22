@@ -1,4 +1,4 @@
-{%extends 'books/base.html'%} 
+{%extends 'books/base.html'%}
 
 
 {% block title%}
@@ -8,51 +8,52 @@ Book Store - {{book.title}}
 
 {% block content%}
 <section class="py-2">
-    
+
     <div class="align-left justify-between">
-    <h1 class="text-center text-3xl font-bold">
-        <div align = 'center'>
-            <img class="p-4 " src="{{book.thumbnailUrl}}" width="200">
-            </img>
-            
-        {{book.title}}
-    </h1>
-        </div>
+        <h1 class="text-center text-3xl font-bold">
+            <div align='center'>
+                <img class="p-4 " src="{{book.thumbnailUrl}}" width="200">
+                </img>
+
+                {{book.title}}
+        </h1>
+    </div>
+    <div>
+        <p>
+            <b>
+                Page count :
+            </b>
+            {{book.pageCount}}
+        </p>
+        <p>
+            <b>
+                Book categories :
+            </b>
+            {{book.categories}}
+        </p>
         <div>
-            <p>
-                <b>
-                    Page count :
-                </b>
-                {{book.pageCount}}
-            </p>
-            <p>
-                <b>
-                    Book categories :
-                </b>
-                {{book.categories}}
-            </p>
-            <div>
-                <b>
-                    Book Author :
-                </b>
-                
-                {% for author in authors %}
-               <a href="{% url 'authors.books' author %}">{{author}}</a>, 
-                {% endfor %}
-                
-            </div>
-            <p>
-                <b>
-                    Book shortDescription :
-                </b>
-                {{book.longDescription}}
-            </p>
+            <b>
+                Book Author :
+            </b>
+
+            {% for author in authors %}
+            <a href="{% url 'authors.books' author %}">{{author}}</a>,
+            {% endfor %}
+
         </div>
+        <p>
+            <b>
+                Book shortDescription :
+            </b>
+            {{book.longDescription}}
+        </p>
+    </div>
     </div>
     <div class="mt-10">
         <form action="{% url 'book.review' book.id %}" method="POST">
             {% csrf_token %}
-            <textarea class="border rounded p-2 w-full" name="review" placeholder="Write your review here" rows="5"></textarea>
+            <textarea class="border rounded p-2 w-full" name="review" placeholder="Write your review here"
+                rows="5"></textarea>
             <button class="float-right border rounded p-2 bg-gray-800 text-white" type="submit">
                 Submit
             </button>
