@@ -6,7 +6,9 @@ Book Store - {{book.title}}
 
 
 {% block content%}
-<section class="py-2">
+
+<section class="  justify-center  py-5 px-4 ">
+
 
     <div class="align-left justify-between">
         <h1 class="text-center text-3xl font-bold">
@@ -17,6 +19,7 @@ Book Store - {{book.title}}
                 {{book.title}}
         </h1>
     </div>
+
     <div>
         <p>
             <b>
@@ -46,7 +49,7 @@ Book Store - {{book.title}}
             </b>
             {{book.longDescription}}
         </p>
-    </div>
+
     </div>
     <div class="mt-10">
         <form action="{% url 'book.review' book.id %}" method="POST">
@@ -64,6 +67,7 @@ Book Store - {{book.title}}
             {{review.body}}
         </p>
         {%endfor%}
+    </div>
     </div>
 </section>
 {% endblock %}

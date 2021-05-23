@@ -5,19 +5,23 @@ Book Store
 {% block content%}
 <div>
     <h1 class="text-center text-3xl font-bold ">
-        Programing Books App
+        Programing Books
     </h1>
     <div class="grid grid-cols-4 gap-4 mt-10">
+
         {%for book in book_list%}
-        <a class="justify-self-center text-center my-4" href="{% url 'book.show' book.id%}" target="_blank">
-            <div class="flex justify-center">
-                <img src="{{book.thumbnailUrl}}" width="100" />
-            </div>
-            <p>
-                {{book.title}}
-            </p>
-        </a>
+        <div class="rounded bg-white-400 max-w-md rounded overflow-hidden shadow-xl p-5 hover:bg-blue-400">
+            <a class="justify-self-center text-center my-4" href="{% url 'book.show' book.id%}" >
+                <div class="flex justify-center">
+                    <img src="{{book.thumbnailUrl}}" width="100" />
+                </div>
+                <p>
+                    {{book.title}}
+                </p>
+            </a>
+        </div>
         {%endfor%}
+
     </div>
 </div>
 {% endblock %}
